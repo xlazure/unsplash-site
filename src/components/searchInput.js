@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useEffect, useState } from "react";
-import { searchPhotos } from "../api/searchPhotos";
+//import { searchPhotos } from "../api/searchPhotos";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SearchInput() {
