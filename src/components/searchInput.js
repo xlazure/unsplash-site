@@ -5,7 +5,7 @@ import { searchPhotos } from "../api/searchPhotos";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SearchInput() {
-  const [term, setTerm] = useState();
+  //const [term, setTerm] = useState();
   const [bg, setBg] = useState();
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,10 +18,6 @@ export default function SearchInput() {
     }
   }, [location.pathname]);
 
-  function test() {
-    // console.log(term);
-    searchPhotos(term);
-  }
   const Button = styled.button`
     position: absolute;
     top: 0;
