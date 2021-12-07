@@ -44,6 +44,8 @@ export default function SearchInput() {
   `;
 
   return (
+    <>
+    <h1>Unsplash</h1>
     <div style={{ position: "relative", width: "100%" }}>
       <Button
         onClick={() => {
@@ -63,5 +65,6 @@ export default function SearchInput() {
         }}
       />
     </div>
+    </>
   );
 }
