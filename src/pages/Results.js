@@ -67,20 +67,20 @@ export default function Results() {
     </Container>
   );
 }
-const RealatedTag = styled.div`
-  background: skyblue;
-  margin-right: 1em;
-  min-width: 120px;
-`;
+// const RealatedTag = styled.div`
+//   background: skyblue;
+//   margin-right: 1em;
+//   min-width: 120px;
+// `;
 
-const Realated = styled.div`
-  margin: 1em auto;
-  width: 95%;
-  overflow-x: auto;
+// const Realated = styled.div`
+//   margin: 1em auto;
+//   width: 95%;
+//   overflow-x: auto;
 
-  display: flex;
-  flex-direction: row;
-`;
+//   display: flex;
+//   flex-direction: row;
+// `;
 
 const Container = styled.main`
   margin: 0 auto;
@@ -133,12 +133,12 @@ const Error = styled.div`
   gap: 0.5em;
   align-items: center;
 `;
-const Loading = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000b7;
-  z-index: 101;
-`;
+// const Loading = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: #000000b7;
+//   z-index: 101;
+// `;
