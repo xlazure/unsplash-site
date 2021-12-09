@@ -61,7 +61,6 @@ export default function Gallery(props) {
                 onClick={() => {
                   setShowFullSize(true);
                   setImgProps(el);
-                  console.log(imgProps);
                 }}
               />
               <TagContainer>

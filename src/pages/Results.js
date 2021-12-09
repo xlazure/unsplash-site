@@ -34,7 +34,7 @@ export default function Results() {
     };
 
     init();
-  }, [term]);
+  }, [term, isLoading, loading, setGallery]);
 
   return (
     <Container>
