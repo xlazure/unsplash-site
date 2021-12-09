@@ -41,7 +41,6 @@ export default function Gallery(props) {
       </Overlay>
     );
   };
-
   return (
     <>
       {showFullSize ? <FullSize {...imgProps} /> : ""}
