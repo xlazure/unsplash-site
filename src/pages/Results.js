@@ -9,7 +9,7 @@ import SearchBar from "../components/search/search";
 
 export default function Results() {
   const navigation = useNavigate();
-  const { term, setTerm } = useContext(TermContext);
+  const { term, setTerm, loading, isLoading } = useContext(TermContext);
   const [gallery, setGallery] = useFetchData(term);
 
   // const [relatedTags, setRealatedTags] = useState([]);
@@ -17,13 +17,15 @@ export default function Results() {
 
   useEffect(() => {
     const init = async () => {
-      if (term !== undefined || "") {
+      if (term !== undefined && loading) {
         await setGallery();
+        console.log("fetch...");
       }
+      isLoading(false);
     };
 
     init();
-  }, [term]);
+  });
 
   return (
     <Container>
