@@ -110,13 +110,13 @@ const FullImg = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 80vw;
-
-  max-height: 80vh;
+  width: auto;
+  height: 70vh;
 
   @media screen and (max-width: 1024px) {
-    width: 90vw;
-    height: 90vh;
+    width: 80vw;
+    height: auto;
+    max-height: 80vh;
   }
 
   background: #ffffff;
@@ -233,6 +233,7 @@ const Place = styled.div`
 `;
 
 const About = styled.div`
+  padding: 0.4em 0;
   background: #9a9a9a;
   width: 100%;
   display: flex;

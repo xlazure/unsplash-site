@@ -12,32 +12,32 @@ export default function Results() {
   const { term, setTerm, loading, isLoading } = useContext(TermContext);
   const [gallery, setGallery] = useFetchData(term);
 
+  //tabs
+  // const [uniqueArr, setUniqueArr] = useState([]);
+  // const [tags, setTags] = useState([]);
+
   useEffect(() => {
     const init = async () => {
       if (term !== undefined && loading) {
         await setGallery();
         console.log("fetch...");
+        isLoading(false);
+
+        // if (uniqueArr !== []) {   //tabs
+        //   console.log("tabs");
+        //   gallery?.results?.map((el) =>
+        //     el.tags.map((tag) => setTags((obj) => [...obj, tag.title]))
+        //   );
+        //     setUniqueArr([...new Set(tags)]);
+        // }
       }
-      isLoading(false);
     };
 
     init();
-  }, [term, setGallery, loading, isLoading]);
+  }, [term]);
 
   return (
     <Container>
-      {/* {loading ? (
-        <Loading>
-          <AiOutlineLoading
-            className="loadingAnimation"
-            size="6em"
-            color="#fff"
-          />
-        </Loading>
-      ) : (
-        ""
-      )} */}
-
       <InputContainer>
         <Button
           onClick={async () => {
@@ -49,12 +49,15 @@ export default function Results() {
         </Button>
         <SearchBar />
       </InputContainer>
-      {/* <RealatedTag>
-        {tags?.slice(0, 10).map((el, index) => {
-          return <Realated key={index}>{el}</Realated>;
-        })}
-      </RealatedTag> */}
+
       <h1>{term}</h1>
+
+      {/* <RelatedTags>    //tabs
+        {uniqueArr?.map((el, index) => {
+          return <Tab key={index}>{el}</Tab>;
+        })}
+      </RelatedTags> */}
+
       {gallery?.total !== 0 ? (
         <Gallery gallery={gallery?.results} />
       ) : (
@@ -66,19 +69,19 @@ export default function Results() {
     </Container>
   );
 }
-// const RealatedTag = styled.div`
-//   background: skyblue;
+// const Tab = styled.div`   //tabs
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border: 1px solid #777;
 //   margin-right: 1em;
+//   height: 3em;
 //   min-width: 120px;
 // `;
-
-// const Realated = styled.div`
-//   margin: 1em auto;
-//   width: 95%;
-//   overflow-x: auto;
-
+// const RelatedTags = styled.div`  //tabs
 //   display: flex;
-//   flex-direction: row;
+//   overflow-x: hidden;
+// }
 // `;
 
 const Container = styled.main`
@@ -135,12 +138,3 @@ const Error = styled.div`
   gap: 0.5em;
   align-items: center;
 `;
-// const Loading = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: #000000b7;
-//   z-index: 101;
-// `;
