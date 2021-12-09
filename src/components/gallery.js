@@ -65,7 +65,7 @@ export default function Gallery(props) {
                   console.log(imgProps);
                 }}
               />
-              <div>
+              <TagContainer>
                 {el.tags?.map((tags, index) => {
                   return (
                     <Tag
@@ -82,7 +82,7 @@ export default function Gallery(props) {
                     </Tag>
                   );
                 })}
-              </div>
+              </TagContainer>
             </ContainerImg>
           );
         })}
@@ -198,11 +198,18 @@ const Img = styled.img`
     cursor: zoom-in;
   }
 `;
+const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.8em;
+`;
 const Tag = styled.span`
+  font-size: 0.8em;
   padding: 0.2em 0.4em;
   background: #f4f4f4;
   color: #595959;
-  margin-right: 1em;
+  /* margin-right: 1em; */
   :hover {
     cursor: pointer;
   }
