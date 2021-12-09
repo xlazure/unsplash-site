@@ -1,7 +1,8 @@
 import Autosuggest from "react-autosuggest";
 import keywords from "../../data/keywords_min.json";
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
+import { BiSearch } from "react-icons/bi";
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -73,7 +74,9 @@ class SearchEngine extends React.Component {
   };
 
   onSuggestionSelected(event, { suggestionValue }) {
-    this.search(suggestionValue);
+    if (event.key === "Enter") {
+      this.search(suggestionValue);
+    }
   }
   search = (value) => {
     this.props.inpValue(value);
@@ -89,17 +92,25 @@ class SearchEngine extends React.Component {
     };
     return (
       <Search>
-        <button>s</button>
+        <button
+          onClick={() => {
+            if (value !== "") {
+              this.props.inpValue(value);
+            }
+          }}
+        >
+          <BiSearch size="1.5em" color="#828080" />
+        </button>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
-          multiSection={true}
+          inputProps={inputProps}
           onSuggestionSelected={this.onSuggestionSelected}
           shouldRenderSuggestions={shouldRenderSuggestions}
-          inputProps={inputProps}
+          highlightFirstSuggestion={true}
         />
       </Search>
     );
@@ -115,11 +126,14 @@ const Search = styled.div`
   border-radius: 4px;
   button {
     width: 4em;
-    border: 1px solid #aaa;
+    border: 1px solid transparent;
     border-right: none;
     outline: none;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    :hover {
+      cursor: pointer;
+    }
   }
   .react-autosuggest__container {
     width: 100%;

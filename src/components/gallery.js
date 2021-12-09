@@ -1,68 +1,111 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TermContext } from "../context/termContext";
+
 export default function Gallery(props) {
   const { setTerm } = useContext(TermContext);
+  const [showFullSize, setShowFullSize] = useState(false);
+  const [url, setUrl] = useState();
 
-  const fullSize = (img) => {
-    <FullImg>
-      <p>image</p>
-      <img src={img.urls.full} />
-    </FullImg>;
+  const FullSize = (props) => {
+    return (
+      <Overlay>
+        <FullImg
+          onClick={() => {
+            setShowFullSize(false);
+          }}
+        >
+          <p>{Image}</p>
+          <img
+            src={props.link}
+            alt="full"
+            onChange={(e) => {
+              console.log("3");
+              console.log(e.target.style.width);
+            }}
+          />
+        </FullImg>
+      </Overlay>
+    );
   };
 
   return (
-    <GalleryContainer>
-      {props.gallery?.map((el) => {
-        return (
-          <ContainerImg key={el.id}>
-            <Img
-              src={el.urls.regular}
-              alt={el.alt_description}
-              onClick={() => {
-                return fullSize(el);
-              }}
-            />
-            <AuthorBio>
-              <AuthorImg
-                src={el.user.profile_image.small}
-                alt={el.user.username}
+    <>
+      {showFullSize ? <FullSize link={url} /> : ""}
+      <GalleryContainer>
+        {props.gallery?.map((el) => {
+          return (
+            <ContainerImg key={el.id}>
+              <Img
+                src={el?.urls.regular}
+                alt={el?.alt_description}
+                onClick={(e) => {
+                  console.log(e.nativeEvent);
+                  setShowFullSize(true);
+                  setUrl(el?.urls?.full);
+                }}
               />
-              <p>{el.user.username}</p>
-            </AuthorBio>
-            <div>
-              {el.tags?.map((tags, index) => {
-                return (
-                  <Tag key={index} onClick={() => setTerm(tags.title)}>
-                    {tags.title}
-                  </Tag>
-                );
-              })}
-            </div>
-          </ContainerImg>
-        );
-      })}
-    </GalleryContainer>
+              <AuthorBio>
+                <AuthorImg
+                  src={el.user.profile_image.small}
+                  alt={el.user.username}
+                />
+                <p>{el.user.username}</p>
+              </AuthorBio>
+              <div>
+                {el.tags?.map((tags, index) => {
+                  return (
+                    <Tag key={index} onClick={() => setTerm(tags.title)}>
+                      {tags.title}
+                    </Tag>
+                  );
+                })}
+              </div>
+            </ContainerImg>
+          );
+        })}
+      </GalleryContainer>
+    </>
   );
 }
+
+const Overlay = styled.div`
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 102;
+  width: 100%;
+  height: 100%;
+  background: #000000ad;
+`;
 const FullImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 103;
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 200px;
-  height: 300px;
-  background: red;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+
+  /* padding: 3em 4em 3em 4em; */
+  background: #ffffff;
   img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  :hover {
+    cursor: zoom-out;
   }
 `;
 
 const GalleryContainer = styled.main`
-  padding: 0 5%;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding-top: 2.5em;
+  margin-top: 2.5em;
 `;
 
 const ContainerImg = styled.div`

@@ -7,7 +7,7 @@ import { TermContext } from "./context/termContext";
 
 export default function App() {
   const [term, setTerm] = useState("");
-  const [loading, isLoading] = useState(false);
+  const [loading, isLoading] = useState(true);
   return (
     <TermContext.Provider value={{ term, setTerm, loading, isLoading }}>
       <Router>
