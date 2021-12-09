@@ -31,6 +31,9 @@ const SearchContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
   h1 {
     padding-bottom: 0.3em;
   }

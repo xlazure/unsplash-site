@@ -24,5 +24,6 @@ export default function SearchBar(props) {
 }
 const Container = styled.div`
   width: 100%;
+  padding: 1.2em 0;
   /* display: flex; */
 `;

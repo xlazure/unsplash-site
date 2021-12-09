@@ -12,9 +12,6 @@ export default function Results() {
   const { term, setTerm, loading, isLoading } = useContext(TermContext);
   const [gallery, setGallery] = useFetchData(term);
 
-  // const [relatedTags, setRealatedTags] = useState([]);
-  // const [tags, setTags] = useState([]);
-
   useEffect(() => {
     const init = async () => {
       if (term !== undefined && loading) {
@@ -110,6 +107,9 @@ const InputContainer = styled.div`
   display: flex;
   width: 60%;
   margin: 0 auto;
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
   button {
     border-bottom-left-radius: 50px;
     border-top-left-radius: 50px;
