@@ -14,9 +14,9 @@ export default function SearchBar(props) {
       {/* <SearchEngine2 /> */}
       <SearchEngine
         inpValue={(value) => {
-          setTerm(value);
           navigation("/results");
           isLoading(true);
+          setTerm(value);
         }}
       />
     </Container>
