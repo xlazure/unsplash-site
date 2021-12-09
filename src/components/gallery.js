@@ -4,7 +4,7 @@ import { TermContext } from "../context/termContext";
 import { MdOutlinePlace } from "react-icons/md";
 
 export default function Gallery(props) {
-  const { setTerm } = useContext(TermContext);
+  const { term, setTerm, isLoading } = useContext(TermContext);
   const [showFullSize, setShowFullSize] = useState(false);
   const [imgProps, setImgProps] = useState();
 
@@ -66,7 +66,16 @@ export default function Gallery(props) {
               <div>
                 {el.tags?.map((tags, index) => {
                   return (
-                    <Tag key={index} onClick={() => setTerm(tags.title)}>
+                    <Tag
+                      key={index}
+                      onClick={() => {
+                        if (term !== tags.title) {
+                          window.scrollTo(0, 0);
+                          setTerm(tags.title);
+                          isLoading(true);
+                        }
+                      }}
+                    >
                       {tags.title}
                     </Tag>
                   );

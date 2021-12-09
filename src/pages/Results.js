@@ -25,7 +25,7 @@ export default function Results() {
     };
 
     init();
-  });
+  }, [term, isLoading, loading]);
 
   return (
     <Container>
