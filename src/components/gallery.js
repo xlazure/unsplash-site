@@ -20,21 +20,23 @@ export default function Gallery(props) {
             Close
           </CloseBtn>
           <img src={props?.urls.full} alt="full" />
-          <AuthorBio>
-            <AuthorImg
-              src={props.user?.profile_image.small}
-              alt={props.user.username}
-            />
-            <p>{props.user.username}</p>
-          </AuthorBio>
-          {props.user.location ? (
-            <Place>
-              <MdOutlinePlace size="1.5em" />
-              <p>{props.user.location}</p>
-            </Place>
-          ) : (
-            ""
-          )}
+          <About>
+            <AuthorBio>
+              <AuthorImg
+                src={props.user?.profile_image.small}
+                alt={props.user.username}
+              />
+              <p style={{ color: "#000" }}>{props.user.username}</p>
+            </AuthorBio>
+            {props.user.location ? (
+              <Place>
+                <MdOutlinePlace size="1.5em" />
+                <p>{props.user.location}</p>
+              </Place>
+            ) : (
+              ""
+            )}
+          </About>
         </FullImg>
       </Overlay>
     );
@@ -111,9 +113,12 @@ const FullImg = styled.div`
   max-width: 80vw;
 
   max-height: 80vh;
-  /* padding: 3em; */
 
-  /* padding: 3em 4em 3em 4em; */
+  @media screen and (max-width: 1024px) {
+    width: 90vw;
+    height: 90vh;
+  }
+
   background: #ffffff;
   img {
     width: 100%;
@@ -217,6 +222,15 @@ const AuthorBio = styled.div`
 `;
 const Place = styled.div`
   display: flex;
+  padding: 0.5em 0;
+`;
+
+const About = styled.div`
+  background: #9a9a9a;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 const CloseBtn = styled.button`
   position: absolute;
