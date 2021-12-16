@@ -26,7 +26,7 @@ npm start
 
 npm run build
 
-### Co nie co o stronie
+### Co nieco o stronie
 
 - Na stronie głównej mamy wyszukiwarke, po wpisaniu min. 3 znaków wyszukiwarka pokazuje podpowiedzi.
 - Pobrane pliki przekonwerowałem do pliku json -> data/keywords.json
