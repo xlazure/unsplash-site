@@ -2,8 +2,6 @@
 
 Przed wejsciem na strone lepiej wylaczyc nie ktore adblocki, zauwazylem ze blokuja one pobieranie danych z unsplasha
 
-## Zadanie rekrutacyjne
-
 Strona hostowna na netlify
 
 [DEMO](https://nifty-ramanujan-483d98.netlify.app/)
